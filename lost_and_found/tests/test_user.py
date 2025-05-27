@@ -8,7 +8,7 @@ from lost_and_found.lost_and_found_system import LostAndFoundSystem
 def test_user_can_report_item_to_system():
     user = User("Iqra", "iqra@gmail.com", "123456789", "Student")
     system = LostAndFoundSystem()
-    item = Item("Watch", "Smartwatch", ItemType.FOUND, Category.ELECTRONIC, "Cafeteria", "123456789")
+    item = Item("Watch", "Smartwatch", ItemType.FOUND, Category.ELECTRONIC, "Helsinki", "123456789")
     user.report_item(system, item)
     assert item in system.items
     assert item.weather_info == "Weather not implemented"
