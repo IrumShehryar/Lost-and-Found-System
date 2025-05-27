@@ -11,7 +11,9 @@ def test_user_can_report_item_to_system():
     item = Item("Watch", "Smartwatch", ItemType.FOUND, Category.ELECTRONIC, "Helsinki", "123456789")
     user.report_item(system, item)
     assert item in system.items
-    #assert item.weather_info == "14.88°C, few clouds"
+    #assert item.weather_info == "Weather not implemented"
+
+    # make sure to update this weather
 
 def test_user_can_search_items_in_system():
     user = User("Iqra", "iqra@gmail.com", "123456789", "Student")
