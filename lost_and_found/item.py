@@ -27,7 +27,7 @@ class Item:
         """
         Update the status of the item.
         """
-        self.status = new_status
+        self.status = new_status               #what is this??????
 
     def matches(self, other_item):
         """
