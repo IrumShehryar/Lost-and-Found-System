@@ -8,4 +8,4 @@ class NonElectronicItem(Item):
 
         # Additional attributes for non-electronic items
         self.material = material      # What material it's made of (e.g., fabric, plastic)
-        self.color = color            # Color of the item
+        self.color = color            # Color of the items
