@@ -7,7 +7,7 @@ def test_item_creation():
     assert item.name == "Phone"
     assert item.status == Status.UNRESOLVED
     assert isinstance(item.item_id , int)
-
+    #
 def test_update_status():
     item =  Item("Wallet", "Leather wallet", ItemType.LOST, Category.NON_ELECTRONIC, "Cafeteria", "56542315")
     item.update_status(Status.RESOLVED)
