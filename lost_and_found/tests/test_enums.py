@@ -8,7 +8,7 @@ from lost_and_found.enums import ItemType, Category, Status
 def test_item_type_values():
     # Asserts that the value of the LOST enum member is "Lost"
     assert ItemType.LOST.value == "Lost"
-    # Asserts that the value of the FOUND enum member is "Found"
+    # Asserts that value of FOUND enum member is "Found"
     assert ItemType.FOUND.value == "Found"
 
 # Test function to verify the values of Category enumeration
