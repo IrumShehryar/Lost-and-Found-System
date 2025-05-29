@@ -18,7 +18,7 @@ def test_category_values():
     # Asserts that the value of the NON_ELECTRONIC enum member is "Non-Electronic"
     assert Category.NON_ELECTRONIC.value == "Non-Electronic"
 
-# Test function to check the values of Status enumeration
+# Test function to check values of Status enumeration
 def test_status_values():
     # Asserts that the value of the UNRESOLVED enum member is "Unresolved"
     assert Status.UNRESOLVED.value == "Unresolved"
