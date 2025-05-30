@@ -9,4 +9,4 @@ class ElectronicItem(Item):
         # Additional attributes specific to electronic items
         self.brand = brand                # Brand of the electronic item
         self.model = model                # Model identifier
-        self.serial_number = serial_number  # Unique serial number of the item
+        self.serial_number = serial_number  # Unique serial number of the items
