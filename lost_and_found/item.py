@@ -9,7 +9,7 @@ class Item:
         self.item_id = Item._id_counter
         Item._id_counter += 1
 
-        # Basic item attributes
+        # Basic item attributess
         self.name = name                      # Name of the item
         self.description = description        # Description of the item
         self.item_type = item_type            # Enum: LOST or FOUND
