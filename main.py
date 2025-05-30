@@ -18,7 +18,7 @@ def clear_screen():
     """Clear the terminal screen based on the OS."""
     os.system("cls" if os.name == "nt" else "clear")
 
-
+# halt for some time
 def pause():
     """Pause the screen until the user presses Enter."""
     input("\nPress Enter to continue...")
