@@ -38,3 +38,8 @@ class Item:
             self.category == other_item.category and
             self.location.lower() == other_item.location.lower()
         )
+    def __str__(self):
+        return (f"[{self.item_id}] {self.name} ({self.item_type.value}) - "
+                f"{self.category.value} - {self.description} at {self.location} "
+                f"Status: {self.status.value}")
+
