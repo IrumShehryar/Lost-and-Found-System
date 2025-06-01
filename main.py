@@ -22,9 +22,9 @@ def main():
         admin.resolve_items(lost_item, found_item)
         print("Items matched and resolved.")
 
-    # Display final system items
+    # ✅ USE __str__ method for full formatted output
     for item in system.items:
-        print(f"{item.name} - {item.status.value}")
+        print(item)
 
 if __name__ == "__main__":
     main()
