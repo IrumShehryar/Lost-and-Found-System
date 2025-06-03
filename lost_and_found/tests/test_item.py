@@ -14,11 +14,16 @@ def test_update_status():
     assert item.status == Status.RESOLVED
 
 def test_item_matches():
-    item1 = Item("Bag", "Blue backpack", ItemType.LOST, Category.NON_ELECTRONIC, "Main Gate", "34527653")
-    item2 = Item("Bag", "Blue backpack", ItemType.FOUND, Category.NON_ELECTRONIC, "Main Gate", "76547654")
+    item1 = Item("Bag", "Blue backpack", ItemType.LOST, Category.NON_ELECTRONIC, "Main Gate", "123")
+    item2 = Item("Bag", "Blue backpack", ItemType.FOUND, Category.NON_ELECTRONIC, "Main Gate", "456")
     assert item1.matches(item2)
 
 def test_unique_item_ids():
     item1 = Item("Book", "Math textbook", ItemType.LOST, Category.NON_ELECTRONIC, "Classroom", "78765622")
     item2 = Item("Pen", "Blue ink pen", ItemType.FOUND, Category.NON_ELECTRONIC, "Library", "98765472")
     assert item1.item_id != item2.item_id
+
+def setup_function():
+    # Reset ID counter before each test (for consistent results)
+    from lost_and_found.item import Item
+    Item._id_counter = 1

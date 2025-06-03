@@ -106,36 +106,41 @@ def admin_menu(admin, system):
         clear()
         title("Admin Menu")
         print("1. View Unresolved Items")
-        print("2. Match Items")
+        print("2. Match Items by Name")
         print("3. Logout")
 
         opt = input("Choose: ")
+
         if opt == "1":
             clear()
             title("Unresolved Items")
-            items = [i for i in system.get_all_items() if i.status == Status.UNRESOLVED]
+            items = [i for i in system.items if i.status == Status.UNRESOLVED]
             if items:
                 for i in items:
                     console.print(i)
             else:
                 console.print("[green]No unresolved items.[/green]")
             wait()
-        elif opt == "2":
-            try:
-                lid = int(input("Lost Item ID: "))
-                fid = int(input("Found Item ID: "))
 
-                lost = next((i for i in system.items if i.item_id == lid and i.item_type == ItemType.LOST), None)
-                found = next((i for i in system.items if i.item_id == fid and i.item_type == ItemType.FOUND), None)
+        elif opt == "2":
+            clear()
+            title("Match Lost and Found Items by Name")
+            try:
+                lost_name = input("Lost Item Name: ").strip().lower()
+                found_name = input("Found Item Name: ").strip().lower()
+
+                lost = next((i for i in system.items if i.name.lower() == lost_name and i.item_type == ItemType.LOST), None)
+                found = next((i for i in system.items if i.name.lower() == found_name and i.item_type == ItemType.FOUND), None)
 
                 if lost and found and admin.match_items(lost, found):
                     admin.resolve_items(lost, found)
-                    console.print("\n[green]✅ Match successful![/green]")
+                    console.print("\n[green]✅ Match successful! Items resolved.[/green]")
                 else:
-                    console.print("\n[red]❌ Match failed or invalid IDs.[/red]")
-            except ValueError:
-                console.print("[red]Enter valid numbers.[/red]")
+                    console.print("\n[red]❌ Match failed. Check item names and types.[/red]")
+            except Exception as e:
+                console.print(f"[red]An error occurred: {e}[/red]")
             wait()
+
         elif opt == "3":
             break
         else:
@@ -200,3 +205,4 @@ def main():
 # ---------- START PROGRAM ----------
 if __name__ == "__main__":
     main()
+
