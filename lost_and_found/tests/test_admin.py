@@ -5,8 +5,11 @@ from lost_and_found.admin import Admin
 
 def test_match_items():
     admin = Admin("Admin User", "irum@gmail.com", "449328224")
+    # Create a lost item and a found item with matching attributes
     lost = Item("Phone", "Black iPhone", ItemType.LOST, Category.ELECTRONIC, "Library", "75643212")
     found = Item("Phone", "Black iPhone", ItemType.FOUND, Category.ELECTRONIC, "Library", "75643212")
+
+    # Assert that the admin is able to match the two items based on similarity
     assert admin.match_items(lost, found) is True
 
 def test_resolve_items():
