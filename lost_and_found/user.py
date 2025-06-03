@@ -2,6 +2,7 @@ from lost_and_found.weather import Weather
 from lost_and_found.item import Item
 from lost_and_found.enums import ItemType
 
+
 class User:
     _id_counter = 1
 
@@ -14,7 +15,7 @@ class User:
         self.name = name
         self.email = email
         self.phone = phone
-        self.role = role  # e.g., "Student" or "Staff"
+        self.role = role  # "student"
 
     def report_item(self, system, item: Item):
 

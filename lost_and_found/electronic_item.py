@@ -10,3 +10,8 @@ class ElectronicItem(Item):
         self.brand = brand                # Brand of the electronic item
         self.model = model                # Model identifier
         self.serial_number = serial_number  # Unique serial number of the item
+
+    def __str__(self):
+        base = super().__str__()
+        return (f"{base}\nElectronic Details - Brand: {self.brand}, "
+                f"Model: {self.model}, Serial: {self.serial_number}")

@@ -30,11 +30,14 @@ class Item:
         self.status = new_status               #what is this??????
 
     def matches(self, other_item):
-        """
-        Check if this item matches another item based on name, category, and location.
-        """
         return (
-            self.name.lower() == other_item.name.lower() and
-            self.category == other_item.category and
-            self.location.lower() == other_item.location.lower()
+                self.name.lower() == other_item.name.lower() and
+                self.category == other_item.category and
+                self.location.lower() == other_item.location.lower()
         )
+
+    def __str__(self):
+        return (f"[{self.item_id}] {self.name} ({self.item_type.value}) - "
+                f"{self.category.value} - {self.description} at {self.location} "
+                f"Status: {self.status.value}")
+
