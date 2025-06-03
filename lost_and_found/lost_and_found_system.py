@@ -27,3 +27,7 @@ class LostAndFoundSystem:
         """
         for item in self.items:
             print(item)
+
+
+    def get_all_items(self):
+            return self.items
