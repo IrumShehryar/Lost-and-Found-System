@@ -17,6 +17,7 @@ class LostAndFoundSystem:
         """
         matching_items = []
         for item in self.items:
+            # Check if the item's type matches and if the location string is present in the item's location
             if item.item_type == item_type and location.lower() in item.location.lower():
                 matching_items.append(item)
         return matching_items
@@ -25,5 +26,5 @@ class LostAndFoundSystem:
         """
         Print all items in the system (basic display function).
         """
-        for item in self.items:
+        for item in self.items: # Iterate through all items stored in the system
             print(item)
