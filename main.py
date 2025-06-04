@@ -1,5 +1,6 @@
 import os
 import time
+import re
 from rich.console import Console
 from rich.table import Table
 from rich import box
@@ -15,23 +16,24 @@ from lost_and_found.weather import Weather
 
 console = Console()
 
-
 # ---------- HELPER FUNCTIONS ----------
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
-
 def wait():
     input("\nPress Enter to continue...")
-
 
 def title(text):
     console.rule(f"[bold blue]{text}", style="bright_magenta")
 
-
 def get_city(location):
     return location.split(",")[-1].strip() if "," in location else location.strip()
 
+def is_valid_email(email):
+    return "@" in email and "." in email and re.match(r"[^@]+@[^@]+\.[^@]+", email)
+
+def is_valid_phone(phone):
+    return phone.isdigit() and len(phone) == 10
 
 # ---------- USER FUNCTIONS ----------
 def report_item(user, system):
@@ -68,7 +70,6 @@ def report_item(user, system):
     console.print("\n[green]✅ Item reported![/green]")
     wait()
 
-
 def search_items(user, system):
     clear()
     title("Search Items")
@@ -98,7 +99,6 @@ def search_items(user, system):
     else:
         console.print("\n[yellow]No matching items found.[/yellow]")
     wait()
-
 
 # ---------- ADMIN FUNCTIONS ----------
 def admin_menu(admin, system):
@@ -147,7 +147,6 @@ def admin_menu(admin, system):
             console.print("[red]Invalid option.[/red]")
             time.sleep(1)
 
-
 # ---------- MAIN FUNCTION ----------
 def main():
     system = LostAndFoundSystem()
@@ -163,8 +162,21 @@ def main():
 
         if choice == "1":
             name = input("Your Name: ")
-            email = input("Your Email: ")
-            phone = input("Your Phone: ")
+
+            while True:
+                email = input("Your Email: ")
+                if is_valid_email(email):
+                    break
+                else:
+                    print("❌ Invalid email. Please enter a valid email (e.g., abc@example.com).")
+
+            while True:
+                phone = input("Your Phone (10 digits): ")
+                if is_valid_phone(phone):
+                    break
+                else:
+                    print("❌ Invalid phone number. It must be exactly 10 digits.")
+
             role = input("Student or Staff: ").strip().capitalize()
             user = User(name, email, phone, role)
 
@@ -188,8 +200,21 @@ def main():
 
         elif choice == "2":
             name = input("Admin Name: ")
-            email = input("Admin Email: ")
-            phone = input("Admin Phone: ")
+
+            while True:
+                email = input("Admin Email: ")
+                if is_valid_email(email):
+                    break
+                else:
+                    print("❌ Invalid email. Please enter a valid email (e.g., admin@example.com).")
+
+            while True:
+                phone = input("Admin Phone (10 digits): ")
+                if is_valid_phone(phone):
+                    break
+                else:
+                    print("❌ Invalid phone number. It must be exactly 10 digits.")
+
             admin = Admin(name, email, phone)
             admin_menu(admin, system)
 
@@ -201,8 +226,6 @@ def main():
             console.print("[red]Invalid choice.[/red]")
             time.sleep(1)
 
-
 # ---------- START PROGRAM ----------
 if __name__ == "__main__":
     main()
-

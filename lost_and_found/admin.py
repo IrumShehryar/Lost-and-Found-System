@@ -7,9 +7,13 @@ class Admin(User):
         # Admin is also a User, with role preset to "Admin"
         super().__init__(name, email, phone, role)
 
-    def match_items(self, lost_item: Item, found_item: Item)-> bool:
-        # Use the item's match method to compare lost and found items
-        return lost_item.matches(found_item)
+    def match_items(self, lost_item, found_item):
+        return (
+                lost_item.name.lower() == found_item.name.lower() and
+                isinstance(lost_item, type(found_item)) and
+                getattr(lost_item, "brand", "") == getattr(found_item, "brand", "") and
+                getattr(lost_item, "model", "") == getattr(found_item, "model", "")
+        )
 
     def resolve_items(self,lost_item: Item, found_item: Item):
         #Update the status of both items to RESOLVED
