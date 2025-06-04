@@ -7,6 +7,7 @@ def test_add_item():
     system = LostAndFoundSystem()
     item = Item("Phone", "Black phone", ItemType.LOST, Category.ELECTRONIC, "Library", "65438765")
     system.add_item(item)
+    # system.add_item(item)
     assert item in system.items
 
 def test_search_items():
