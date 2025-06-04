@@ -13,7 +13,9 @@ def test_match_items():
     assert admin.match_items(lost, found) is True
 
 def test_resolve_items():
+    # Create an admin user
     admin = Admin("Admin User", "irum@gmail.com", "449328224")
+    # Create a lost item with basic attributes
     lost = Item("Wallet", "Leather wallet", ItemType.LOST, Category.NON_ELECTRONIC, "Gate", "64744333")
     found = Item("Wallet", "Leather wallet", ItemType.FOUND, Category.NON_ELECTRONIC, "Gate", "72727822")
     admin.resolve_items(lost, found)
