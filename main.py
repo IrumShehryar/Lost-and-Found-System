@@ -79,6 +79,10 @@ def report_item(user, system):
 
     user.report_item(system, item)
     console.print("\n[bold green]✅ Item reported successfully![/bold green]")
+
+    if item.item_type == ItemType.FOUND and item.weather_info:
+        console.print(f"[bold blue]🌦️ Weather at {item.location}: {item.weather_info}[/bold blue]")
+
     wait()
 
 
@@ -94,7 +98,6 @@ def search_items(user, system):
         return
 
     keyword = console.input("[bold yellow]Location keyword:[/] ")
-
     results = user.search_item(system, item_type, keyword)
 
     if results:

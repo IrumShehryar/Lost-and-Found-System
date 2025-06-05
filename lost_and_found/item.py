@@ -1,27 +1,20 @@
 from lost_and_found.enums import Category, Status, ItemType
 
 class Item:
-    # Class-level counter to assign unique item IDs
-    _id_counter = 1
+    _id_counter = 1  # class-level counter
 
-    def __init__(self, name, description, item_type, category, location, contact_info):
-        # Unique identifier for the item
+    def __init__(self, name, description, item_type, location, contact_info):
         self.item_id = Item._id_counter
         Item._id_counter += 1
 
-        # Basic item attributes
-        self.name = name                      # Name of the item
-        self.description = description        # Description of the item
-        self.item_type = item_type            # Enum: LOST or FOUND
-        self.category = category              # Enum: ELECTRONIC or NON_ELECTRONIC
-        self.location = location              # Where it was lost/found
-        self.contact_info = contact_info      # Contact of the person reporting
-
-        # Status of the item, default is unresolved
+        self.name = name
+        self.description = description
+        self.item_type = item_type
+        self.location = location
+        self.contact_info = contact_info
         self.status = Status.UNRESOLVED
+        self.weather_info = None  # default
 
-        # Weather info to be fetched when needed
-        self.weather_info = None
 
     def update_status(self, new_status):
         """

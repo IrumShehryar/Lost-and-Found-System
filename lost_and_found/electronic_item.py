@@ -1,15 +1,14 @@
 from lost_and_found.item import Item
 from lost_and_found.enums import Category, ItemType
+from .item import Item
 
 class ElectronicItem(Item):
     def __init__(self, name, description, item_type, location, contact_info, brand, model, serial_number):
-        # Initialize base item class
-        super().__init__(name, description, item_type, Category.ELECTRONIC, location, contact_info)
+        super().__init__(name, description, item_type, location, contact_info)
+        self.brand = brand
+        self.model = model
+        self.serial_number = serial_number
 
-        # Additional attributes specific to electronic items
-        self.brand = brand                # Brand of the electronic item
-        self.model = model                # Model identifier
-        self.serial_number = serial_number  # Unique serial number of the item
 
     def __str__(self):
         base = super().__str__()

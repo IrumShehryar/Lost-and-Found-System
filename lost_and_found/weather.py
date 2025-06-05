@@ -5,7 +5,7 @@ class Weather:
     BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
     @staticmethod
-    def get_current_weather(location: str)-> str:
+    def get_current_weather(location: str) -> str:
         """
         Get the current weather for a given location using OpenWeatherMap API.
         """
@@ -22,7 +22,8 @@ class Weather:
             description = data["weather"][0]["description"]
             return f"{temperature}°C, {description}"
         except Exception as e:
-            return f"Weather not available:{e}"
+            return f"Weather not available: {e}"
+
 
 
 
