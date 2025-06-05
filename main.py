@@ -167,7 +167,7 @@ def main():
 
         choice = input("Select an option: ")
 
-        if choice == "1":
+        if choice == "1": # The menu starts
             # STUDENT or STAFF
             name = input("Your name: ")
             email = input("Your email: ")
