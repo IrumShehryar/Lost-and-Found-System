@@ -26,5 +26,15 @@ class LostAndFoundSystem:
         """
         Print all items in the system (basic display function).
         """
+
+        def display_items(self):
+            """
+            Print all items in the system (basic display function).
+            """
+            """
+               # Loop through each item in the items list (assumed to be stored in self.items)
+               # and print it to the console. Each item should have a meaningful string representation
+               # (__str__ or __repr__ method) for this to be useful.
+               
         for item in self.items: # Iterate through all items stored in the system
             print(item)
