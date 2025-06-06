@@ -7,6 +7,7 @@ from lost_and_found.admin import Admin
 def main():
     system = LostAndFoundSystem()
     user = User("Iqra", "iqra@example.com", "123456789", "Student")
+    # Create an admin who will manage the system and resolve matched items
     admin = Admin("Admin", "admin@example.com", "000000000")
 
     # User reports a found item
